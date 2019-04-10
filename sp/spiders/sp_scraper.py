@@ -20,8 +20,22 @@ class spSpider(scrapy.Spider):
         for url in url_state:
             self.log("sdfa")
             self.log(url)
-            yield scrapy.Request(url=url, callback=self.parse_state)
-
+            yield scrapy.Request(url=url,
+                                 cookies={
+    "domain": ".publicholidays.us",
+    "expirationDate": 1617988855,
+    "hostOnly": "false",
+    "httpOnly": "false",
+    "name": "__gads",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": "false",
+    "session": "false",
+    "storeId": "0",
+    "value": "ID=425b6fd28abca271:T=1554916855:S=ALNI_MYCPgcgo-UXmJz_1ZFwLfMIFdJNqg",
+    "id": 1
+},
+                                 callback=self.parse_state)
         self.log('scraped %s' % page)
 
     def parse_state(self, response):
